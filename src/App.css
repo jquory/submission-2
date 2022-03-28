@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&family=Moon+Dance&family=Poppins&family=Roboto:wght@300&display=swap');
+
+*{
+    overflow: auto;
+    font-family: Roboto;
+}
+
+.wrapper {
+  color:  #fff;
+  background-color: #000;
+  padding: 20px;
+}
+
 .App {
   text-align: center;
 }
