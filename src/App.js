@@ -5,6 +5,11 @@ import Track from './Components/Tracks';
 import Wrapper from './Components/Wrapper';
 
 function App() {
+  const clientId = process.env.CLIENT_ID
+  const redirect_uri = 'http://localhost:3000/callback'
+  const scope = 'playlist-modify-private'
+  const url = `http://accounts.spotify.com/authorize?respon_type=token&client_id=${clientId}&scope=${scope}&redirect_uri=${redirect_uri}`
+
   return (
     <div className='wrapper'>
       <Wrapper />
