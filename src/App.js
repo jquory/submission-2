@@ -18,9 +18,9 @@ function App() {
     <div className='wrapper'>
       <Wrapper />
       <Search />
-      {/* {data.map((d)=> (
-        <Track key={d.id} image={d.album.images[0].url} artist={d.album.artists[0].name} title={d.name} link={d.external_urls.spotify} login={url}/>
-      ))} */}
+      {data.map((d)=> (
+        <Track key={d.id} image={d.album.images[0].url} artist={d.album.artists[0].name} title={d.name} link={d.external_urls.spotify}/>
+      ))}
 
       
     </div>
