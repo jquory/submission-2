@@ -6,14 +6,14 @@ const Search = () => {
 
   
 
-  const accessToken = 'BQByJqVcTv0h2aXArxZniucCTBv2p5cnu9K_PpdLjj6ZidumBXTh6rAp2pOBT-TSgMJjp6oyEnXMbd_bF-rS233OG3ocPlfbxRQnhIAh64MSA9dxNhJE9paOcSvBRpbeQVN6TCCAR0eZJ-6PjrKymEfZ2jOouur07o4X8IAxNdFoY-Vci-4apwvg7YMqceaz7pQ'
+  const accessToken = 'BQCW2JalTZmvUTFXxsXYCC6rRoqelrq9-BxSMTppsiqKlC-z4SVS_ktsFGvyV2Pkv5nCRumrlEBJy14txcLTodJRNtv4ynKyQYOPOwMOpj4JRvxzUulHuLT-UpcVP8t08RkLIWFggW8KKL6bwCOOH0st9cXJvduAB7vlG2nSFVx-D0fqkH7Q-s2gTrRKBvxGpJk'
   const [api, setApi] = useState([])
   const [search, setSearch] = useState('')
   const access_token = window.location.hash.substring(1, window.location.hash.length -1).split("&")[0].split("=")[1]
 
-  const [select, setSelect] = useState('')
+  const [selected, setSelected] = useState([])
 
-  const [selected, deselect] = useState('')
+  // const [selected, deselect] = useState('')
   
 
   const getSpotify = async() => {
@@ -45,16 +45,12 @@ const Search = () => {
       <button type='submit' onClick={handleSubmit}>Search</button>
       
       {api.map((d) => (
-        <Track key={d.id} image={d.album.images[0].url} artist={d.album.artists[0].name} title={d.name} link={d.external_urls.spotify} login={<button />}/>
+        <div key={d.id}>
+          <Track data={d} selected={selected} setSelected={setSelected}/>
+        </div>
       ))}
-      {select.includes(api.uri) ? (
-        <button onClick={() => setSelect(select.filter((uri) => uri !== api.uri))}>Selected</button>
-      ) : (
-        <button onClick={() => setSelect([...select, api.uri])} >Select</button>
-      )}
 
     </div>
   )
 }
-
 export default Search
