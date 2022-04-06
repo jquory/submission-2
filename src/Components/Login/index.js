@@ -10,12 +10,12 @@ const Login = () => {
   const url = `http://accounts.spotify.com/authorize?&client_id=${clientId}&scope=${scope}&redirect_uri=${redirect_uri}&response_type=token&show_dialog=true`
 
   const handleLogin = () => {
-    window.open(`${url}`)
+    window.open(`http://accounts.spotify.com/authorize?&client_id=${clientId}&scope=${scope}&redirect_uri=${redirect_uri}&response_type=token&show_dialog=true`)
   }
 
   return (
     <div>
-        <button onClick={()=> handleLogin}>Login</button>
+        <button onClick={handleLogin}>Login</button>
     </div>
   )
 }

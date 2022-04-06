@@ -14,15 +14,17 @@ img {
 
 .item-body {
     align-items: center;
+    display: flex;
     padding: 10px;
     font-size: 20px;
     margin-top: 30px;
     margin-left: auto;
 }
-.button {
-    margin-left: auto;
-    margin-top: 5rem;
+.title{
+    margin-right: 6rem;
+    width: 200px;
 }
+
 .btn {
     background-color: #fff;
     border: none;
@@ -33,6 +35,18 @@ img {
 @media (max-width: 720px) {
     .item {
         width: 90%;
+    }
+    .item-body {
+        display: block;
+        justify-content: center;
+        text-align: center;
+        margin: auto;
+    }
+    .button{
+        margin: auto;
+    }
+    .title{
+        margin: auto;
     }
 }
 

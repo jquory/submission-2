@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Track from '../Tracks'
+import { useSelector } from 'react-redux'
 import './index.css'
 
 const Search = () => {
 
-  
-
-  const accessToken = 'BQCW2JalTZmvUTFXxsXYCC6rRoqelrq9-BxSMTppsiqKlC-z4SVS_ktsFGvyV2Pkv5nCRumrlEBJy14txcLTodJRNtv4ynKyQYOPOwMOpj4JRvxzUulHuLT-UpcVP8t08RkLIWFggW8KKL6bwCOOH0st9cXJvduAB7vlG2nSFVx-D0fqkH7Q-s2gTrRKBvxGpJk'
+  const accessToken = useSelector((state) => state.token.token)
   const [api, setApi] = useState([])
   const [search, setSearch] = useState('')
-  const access_token = window.location.hash.substring(1, window.location.hash.length -1).split("&")[0].split("=")[1]
 
   const [selected, setSelected] = useState([])
 
-  // const [selected, deselect] = useState('')
   
 
   const getSpotify = async() => {

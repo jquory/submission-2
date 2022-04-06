@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css'
 import Search from './Components/Search';
+import { useSelector } from 'react-redux';
+import { Component } from 'react';
 import Login from './Components/Login';
 
 function App() {
   
-
+  const accessToken = useSelector((state) => state.token.token)
   return (
     
     <div className='wrapper'>
 
-      <Search />
-      {/* {data.map((d)=> (
-        <Track key={d.id} image={d.album.images[0].url} artist={d.album.artists[0].name} title={d.name} link={url}/>
-      ))} */}
+      {accessToken? <Search /> : <Login />}
 
       
     </div>
