@@ -1,3 +1,7 @@
+.wrap {
+    padding: 5px;
+}
+
 .item {
     display: flex;
     margin: auto;
@@ -34,19 +38,27 @@ img {
 
 @media (max-width: 720px) {
     .item {
-        width: 90%;
+        width: 85%;
     }
     .item-body {
         display: block;
         justify-content: center;
         text-align: center;
         margin: auto;
+        font-size: 15px;
     }
     .button{
         margin: auto;
     }
     .title{
         margin: auto;
+        width: 120px;
+    }
+    .item img{
+        width: 150px;
+    }
+    .btn {
+        font-size: 15px;
     }
 }
 

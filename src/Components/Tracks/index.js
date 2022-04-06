@@ -5,7 +5,8 @@ import './index.css'
 const Track = ({ data, selected, setSelected }) => {
     console.log(data)
     return (
-        <div className="item">
+        <div className="wrap">
+            <div className="item">
         <img src={data.album.images[0].url} alt={data.title} />
         <div className="item-body">
             <div className="title">
@@ -20,6 +21,7 @@ const Track = ({ data, selected, setSelected }) => {
             )}
         
             </div>
+        </div>
         </div>
         
     </div>
