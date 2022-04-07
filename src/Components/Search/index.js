@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from 'react'
 import Track from '../Tracks'
 import { useSelector } from 'react-redux'
 import './index.css'
+import CreatePlaylist from '../createPlaylist'
 
 const Search = () => {
 
@@ -46,6 +47,8 @@ const Search = () => {
           <Track data={d} selected={selected} setSelected={setSelected}/>
         </div>
       ))}
+
+      <CreatePlaylist accessToken={accessToken} selected={selected}/>
 
     </div>
   )
