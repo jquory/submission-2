@@ -1,16 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setAccessToken } from '../redux/slice/sliceToken'
 
 const Login = () => {
 
-  const access_token = window.location.hash.substring(1, window.location.hash.length -1).split("&")[0].split("=")[1]
-  
-  const redirectUri = 'http://localhost:3000/callback'
-  const clientId = '3e998473355d4fb7936636c8bd356fd6'
-  const scope = 'playlist-modify-private'
-  const url = `http://accounts.spotify.com/authorize?&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`
+  const history = useHistory()
+  const accessToken = useSelector((state) => state.token.token)
+  const dispatch = useDispatch()
+  const clientID = '3e998473355d4fb7936636c8bd356fd6'
 
+  useEffect(() => {
+    if (accessToken) {
+      history.push('/create-playlist')
+    }
+  },[accessToken, history])
+  
   const handleLogin = () => {
-    window.open(`http://accounts.spotify.com/authorize?&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`)
+    window.location.replace(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&redirect_uri=http://localhost:3000/&scope=user-read-email playlist-modify-private playlist-read-private`)
+  }
+  const accessTokenUrl = window.location.hash.substring(1, window.location.hash.length -1)
+    .split('&')[0]
+    .split('=')[1]
+
+  if(accessTokenUrl) {
+    dispatch(setAccessToken({ accessToken: accessTokenUrl }))
+    history.push({
+      pathname: '/create-playlist'
+    })
   }
 
   return (

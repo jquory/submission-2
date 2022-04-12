@@ -1,18 +1,23 @@
 import React from 'react';
 import './App.css'
 import Search from './Components/Search';
-import { useSelector } from 'react-redux';
-import { Component } from 'react';
 import Login from './Components/Login';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Routing from './Components/Routing';
 
 function App() {
   
-  const accessToken = useSelector((state) => state.token.token)
   return (
     
     <div className='wrapper'>
-
-      {accessToken? <Search /> : <Login />}
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Routing path="/create-playlist" component={Search} />
+        </Switch>
+      </Router>
 
       
     </div>

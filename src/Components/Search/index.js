@@ -1,11 +1,13 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Track from '../Tracks'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import './index.css'
 import CreatePlaylist from '../createPlaylist'
+import { removeAccessToken } from '../redux/slice/sliceToken'
 
 const Search = () => {
 
+  const dispatch = useDispatch()
   const accessToken = useSelector((state) => state.token.token)
   const [api, setApi] = useState([])
   const [search, setSearch] = useState('')
@@ -41,6 +43,9 @@ const Search = () => {
 
       <input type="text" value={search} onChange={handleChange} />
       <button type='submit' onClick={handleSubmit}>Search</button>
+      <div className="tombol">
+        <button onClick={() => dispatch(removeAccessToken())}>Log Out</button>
+      </div>
       
       {api.map((d) => (
         <div key={d.id}>
